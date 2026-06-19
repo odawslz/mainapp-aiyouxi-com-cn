@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://odawslz.github.io/mainapp-aiyouxi-com-cn/sitemap.xml
