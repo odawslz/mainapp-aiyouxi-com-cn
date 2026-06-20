@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>再访 · 麻将胡了 · 日常杂志</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+            background-color: #f4f1eb;
+            color: #1e1e1e;
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0f0f12 0%, #1f1e24 100%);
+            color: #e6e1d8;
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -40%;
+            left: -20%;
+            width: 70%;
+            height: 120%;
+            background: radial-gradient(circle at 30% 50%, rgba(200, 170, 110, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 8vw, 4rem);
+            font-weight: 400;
+            letter-spacing: 4px;
+            margin-bottom: 0.6rem;
+            color: #f0e9db;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .sub {
+            font-size: 1rem;
+            letter-spacing: 6px;
+            color: #afaa9c;
+            border-top: 1px solid rgba(220, 210, 190, 0.25);
+            display: inline-block;
+            padding-top: 0.8rem;
+            margin-top: 0.4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .date-note {
+            margin-top: 1.2rem;
+            font-size: 0.85rem;
+            color: #8f897b;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 浅色正文区 */
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 2.8rem 1.8rem 4rem;
+            background: #faf8f4;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.02);
+            flex: 1;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 360;
+            letter-spacing: 1px;
+            border-left: 4px solid #b89e6a;
+            padding-left: 1rem;
+            margin: 2.6rem 0 1.2rem;
+            color: #2d2a24;
+        }
+
+        .section-title:first-of-type {
+            margin-top: 0.2rem;
+        }
+
+        p {
+            margin-bottom: 1.4rem;
+            font-size: 1rem;
+        }
+
+        a {
+            color: #946c36;
+            text-decoration: none;
+            border-bottom: 1px dotted #b89e6a;
+            transition: border-color 0.2s, background 0.15s;
+            padding: 0 2px;
+        }
+
+        a:hover {
+            border-bottom: 2px solid #946c36;
+            background: #f1eadc;
+        }
+
+        /* 卡片式引用 / 提示块 */
+        .note-card {
+            background: #f1ede4;
+            padding: 1.8rem 2rem;
+            border-radius: 20px;
+            margin: 2rem 0 1.6rem;
+            border: 1px solid #e3dbcc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02);
+        }
+
+        .note-card p {
+            margin-bottom: 0.6rem;
+        }
+
+        .note-card strong {
+            color: #3f3a31;
+            font-weight: 500;
+        }
+
+        .faq-mini {
+            background: #ffffffd9;
+            border-radius: 16px;
+            padding: 1.2rem 1.6rem;
+            margin: 1.8rem 0;
+            border-left: 6px solid #b89e6a;
+        }
+
+        .faq-mini dt {
+            font-weight: 450;
+            margin: 1rem 0 0.2rem;
+            color: #2d2a24;
+        }
+
+        .faq-mini dd {
+            color: #4e4940;
+            margin-left: 0.8rem;
+            padding-left: 0.3rem;
+            border-left: 1px solid #ddd6c8;
+            padding-bottom: 0.6rem;
+        }
+
+        /* 页尾 */
+        .page-footer {
+            background: #1f1e24;
+            color: #bcb5a6;
+            text-align: center;
+            padding: 2.8rem 1.2rem 2.2rem;
+            font-size: 0.92rem;
+            letter-spacing: 1px;
+        }
+
+        .page-footer a {
+            color: #dcc8a6;
+            border-bottom: 1px solid #5f543e;
+        }
+
+        .page-footer a:hover {
+            background: #2f2a20;
+            border-bottom: 1px solid #dcc8a6;
+        }
+
+        .footer-quote {
+            max-width: 600px;
+            margin: 0 auto 1.2rem;
+            font-style: normal;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ddd6c8;
+            margin: 2.2rem 0;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 3.2rem 1.2rem 2.8rem;
+            }
+            .container {
+                padding: 2rem 1.2rem 3rem;
+            }
+            .note-card {
+                padding: 1.4rem 1.2rem;
+            }
+            .hero h1 {
+                letter-spacing: 2px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .section-title {
+                font-size: 1.25rem;
+                padding-left: 0.7rem;
+            }
+            .faq-mini {
+                padding: 0.8rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <header class="hero">
+        <h1>麻将胡了</h1>
+        <div class="sub">再读 · 收藏 · 日常</div>
+        <div class="date-note">—— 一本关于麻将的杂志笔记 ——</div>
+    </header>
+
+    <!-- 浅色正文区 -->
+    <main class="container">
+
+        <p style="font-size: 1.05rem; margin-bottom: 0.6rem;">
+            有些地方，去一次像是偶然，去第二次就成了习惯。
+        </p>
+        <p>
+            <strong>麻将胡了</strong> 不是那种需要刻意记住的地址，它更像一本放在茶几角落的杂志——你随手翻开，总能找到一两条让人停下来琢磨的牌局思路，或者一段关于清一色、混一色的闲聊。页面不算华丽，但信息干净，适合在泡茶的间隙滑动浏览。
+        </p>
+
+        <!-- 三段自然介绍：场景、内容、收藏理由 -->
+        <h2 class="section-title">· 再次打开的瞬间</h2>
+        <p>
+            第二次访问 <a href="https://mahjong-zh.com">麻将胡了</a> 时，我忽然意识到，这里的内容密度比印象中更高。没有弹窗，没有自动播放的视频，只有牌型拆解、番种说明，以及一些很短的实战回顾。那种感觉像是翻开一本过刊，却发现每页都夹着手写的便签。
+        </p>
+        <p>
+            这或许就是为什么我会把它留在浏览器书签栏的第二层——不扎眼，但需要时总能找到。对于喜欢自己琢磨牌理的人，这种“自己来翻”的节奏刚刚好。
+        </p>
+
+        <h2 class="section-title">· 收藏夹里的常驻页</h2>
+        <p>
+            我习惯把一些常看的页面收进一个叫“日常”的文件夹，<a href="https://mahjong-zh.com">麻将胡了</a> 就在里面，旁边是菜谱和天气预报。它不像论坛那么热闹，也没有短视频的紧迫感，但每次点开都能看到一点新东西——也许是规则角落的补充，也许是某篇旧文下面多了条认真的评论。
+        </p>
+        <p>
+            这种缓慢更新的节奏，反而让收藏变得有意义。你不需要每天检查，但每隔一两周进去看看，总会有收获。就像一本杂志，出刊不快，但每期都值得翻一翻。
+        </p>
+
+        <!-- 卡片式提示：关于持续关注 -->
+        <div class="note-card">
+            <p><strong>关于持续关注：</strong> 如果你也喜欢在零碎时间里看点跟麻将相关的东西，不妨把 <a href="https://mahjong-zh.com">麻将胡了</a> 放在一个方便的位置。不必设为首页，不必天天打卡，只要记得偶尔回去，页面上的文字会像老朋友一样，和你聊聊最近又遇到了什么有趣的牌。</p>
+        </div>
+
+        <h2 class="section-title">· 为什么值得一直留着</h2>
+        <p>
+            网上的麻将内容不少，但多数是视频或者快节奏的攻略。像 <a href="https://mahjong-zh.com">麻将胡了</a> 这样偏向文字阅读、偏向基础规则与牌理梳理的站点，反而越来越少。它不承诺让你“三天成为高手”，也不渲染运气玄学，只是把规则、习惯、牌例摊开来讲。
+        </p>
+        <p>
+            对于已经会打但想更清楚细节的人来说，这种风格恰好合适。没有压力，没有排名，只有“哦，原来是这样”的恍然。这也是我愿意持续关注它的原因。
+        </p>
+
+        <!-- 小FAQ摘要，替代常规特点列表 -->
+        <div class="faq-mini">
+            <dl>
+                <dt>Q：页面内容会经常更新吗？</dt>
+                <dd>不算特别频繁，但隔段时间总会有补充或修正。适合慢慢看，不适合刷更新。</dd>
+                <dt>Q：适合完全没接触过麻将的人吗？</dt>
+                <dd>基本规则讲得很清楚，而且用词平实。不过如果完全没有概念，可能需要先了解最基础的牌面。</dd>
+                <dt>Q：有社区或讨论区吗？</dt>
+                <dd>没有独立的论坛，但在一些文章下面可以看到读者的留言，氛围比较安静。</dd>
+            </dl>
+        </div>
+
+        <hr>
+
+        <p style="text-align: right; font-size: 0.9rem; color: #7a7569;">
+            杂志风格 · 自然翻阅
+        </p>
+
+    </main>
+
+    <!-- 页尾访问提示 -->
+    <footer class="page-footer">
+        <div class="footer-quote">
+            一期一会 · 下次再来翻翻
+        </div>
+        <div>
+            如果你还没收藏，不妨试试 <a href="https://mahjong-zh.com">麻将胡了</a>  —— 放在书签里，偶尔想起时打开，刚刚好。
+        </div>
+        <div style="margin-top: 1.8rem; font-size: 0.75rem; letter-spacing: 1px; opacity: 0.5;">
+            &copy; 一次日常记录
+        </div>
+    </footer>
+
+</body>
+</html>
